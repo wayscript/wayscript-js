@@ -1,0 +1,49 @@
+{
+  "name": "wayscript",
+  "version": "0.2.0",
+  "description": "WayScript gives you flexible building blocks to seamlessly integrate, automate and host tools in the cloud.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "src/"
+  ],
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint --ignore-path .gitignore ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wayscript/wayscript-js.git"
+  },
+  "keywords": [
+    "wayscript",
+    "productivity",
+    "software",
+    "superpowers",
+    "scripts",
+    "cloud",
+    "tools",
+    "backend",
+    "visual",
+    "low-code",
+    "modules",
+    "trigger"
+  ],
+  "author": "Team WayScript",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wayscript/wayscript-js/issues"
+  },
+  "homepage": "https://wayscript.com",
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-plugin-jest": "^24.3.6",
+    "jest": "^27.0.6"
+  },
+  "dependencies": {}
+}
