@@ -9,3 +9,5 @@ const ROUTES = {
     "wokspaces": {"detail": WORKSPACES_ROUTE + "/$id"},
     "processes": {"detail_expanded": PROCESSES_ROUTE + "/$id/detail"}
 }
+
+module.exports = {WAYSCRIPT_ORIGIN, ROUTES};
