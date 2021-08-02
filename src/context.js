@@ -3,7 +3,9 @@ const utils = require("./utils");
 function processResponseFromClient(response) {
     let responseStatus = response[0];
     let jsonResponseData = response[1];
-    if (responseStatus != 200) {
+    if (!(200 <= responseStatus && responseStatus <= 299)) {
+        //console.log(responseStatus);
+        //console.log(jsonResponseData);
         return JSON.parse(`{ "Success" : "False", "Status" : "${responseStatus}"}`);
     }
     return jsonResponseData;
@@ -38,5 +40,15 @@ function getLair() {
     return processResponseFromClient(response);
 }
 
+function getWorkspace() {
+    let lair = getLair();
+    let workspaceId = lair["workspace_id"];
 
-module.exports = {getProcessDetailExpandedData, getProcess, getEvent, getLairTrigger, getLair};
+    let client = new utils.WayScriptClient();
+    let response = client.getWorkspaceDetail(workspaceId);
+    return processResponseFromClient(response);
+
+}
+
+
+module.exports = {getProcessDetailExpandedData, getProcess, getEvent, getLairTrigger, getLair, getWorkspace};

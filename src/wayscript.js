@@ -1,5 +1,3 @@
-const utils = require('./utils.js');
+const context = require('./context');
 
-const WayScriptClient = new utils.WayScriptClient();
-
-module.exports = { WayScriptClient};
+module.exports = { context };
