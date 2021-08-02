@@ -49,11 +49,9 @@ class WayScriptClient {
         
         let jsonResponse = '';
         request.onreadystatechange = function() {
-            
             if (this.readyState == 4 && this.status == 200) {
                 jsonResponse = this.response;
             }
-            
         };
         request.send();
 
