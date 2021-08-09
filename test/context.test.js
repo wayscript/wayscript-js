@@ -1,23 +1,25 @@
 const context = require("../src/context");
 
-test('Get Process Detail Expanded Data With invalid Env vars', () => {
-    let originalUserToken = process.env.PROCESS_EXECUTION_USER_TOKEN;
-    let originalProcessUUID = process.env.PROCESS_UUID; 
 
+let originalUserToken = process.env.PROCESS_EXECUTION_USER_TOKEN;
+let originalProcessUUID = process.env.PROCESS_UUID; 
+
+test('Get Process Detail Expanded Data With invalid Env vars', () => {
     process.env.PROCESS_EXECUTION_USER_TOKEN = "sdfklj";
     process.env.PROCESS_UUID = "lsdkfj";
-    expect(context.getProcessDetailExpandedData()).toStrictEqual(JSON.parse(`{ "Success" : "False", "Status" : "404"}`));
+    expect(context.getProcessDetailExpandedData()).toStrictEqual(JSON.parse('{ "Success" : "False", "Status" : "404"}'));
     
-    process.env.PROCESS_EXECUTION_USER_TOKEN = originalUserToken;
-    process.env.PROCESS_UUID = originalProcessUUID;
+});
 
+test('Get Process Detail Expanded Data with Valid vars', () => {
+    process.env.PROCESS_EXECUTION_USER_TOKEN = "sdfklj";
+    process.env.PROCESS_UUID = "lsdkfj";
+    expect(context.getProcessDetailExpandedData()).toStrictEqual(JSON.parse('Insert expected Return Value here'));
 });
 
 
-// To Do: Add more tests once there are valid endpoints
+// To Do: Make Tests more robust once there are valid endpoints
 
-
-/**
 test('Get Process', () => {
     const mockDataFromProcessDetailRequest = {
         "event": {
@@ -56,9 +58,29 @@ test('Get Process', () => {
 
 });
 
-test('Get Workspace Data With invalid env vars', () => {
+test('Get Event', () => {
     process.env.PROCESS_EXECUTION_USER_TOKEN = "sdfklj";
-    process.env.PROCESS_UUID = "lsdkfj";
-    expect(context.getWorkspace()).toStrictEqual(JSON.parse(`{ "Success" : "False", "Status" : "404"}`));
+    process.env.PROCESS_UUID = "dd57b3d9-52aa-4407-84ca-3ef998757aa1";
+    expect(context.getEvent()).toStrictEqual(JSON.parse('Insert expected Return Value here'));
 });
-**/
+
+test('Get LairTrigger', () => {
+    process.env.PROCESS_EXECUTION_USER_TOKEN = "sdfklj";
+    process.env.PROCESS_UUID = "dd57b3d9-52aa-4407-84ca-3ef998757aa1";
+    expect(context.getLairTrigger()).toStrictEqual(JSON.parse('Insert expected Return Value here'));
+});
+
+test('Get Lair', () => {
+    process.env.PROCESS_EXECUTION_USER_TOKEN = "sdfklj";
+    process.env.PROCESS_UUID = "dd57b3d9-52aa-4407-84ca-3ef998757aa1";
+    expect(context.getLair()).toStrictEqual(JSON.parse('Insert expected Return Value here'));
+});
+
+test('Get Workspace', () => {
+    process.env.PROCESS_EXECUTION_USER_TOKEN = "sdfklj";
+    process.env.PROCESS_UUID = "dd57b3d9-52aa-4407-84ca-3ef998757aa1";
+    expect(context.getWorkspace()).toStrictEqual(JSON.parse('Insert expected Return Value here'));
+});
+
+process.env.PROCESS_EXECUTION_USER_TOKEN = originalUserToken;
+process.env.PROCESS_UUID = originalProcessUUID;
