@@ -49,9 +49,9 @@ test('Get Process', () => {
         }
     };
 
-    let spy = jest.spyOn(context,'getProcess').mockImplementation(() => mockDataFromProcessDetailRequest["process"]);
+    let spy = jest.spyOn(context,'getProcess').mockImplementation(() => mockDataFromProcessDetailRequest.process);
 
-    expect(context.getProcess()).toStrictEqual(mockDataFromProcessDetailRequest["process"]);
+    expect(context.getProcess()).toStrictEqual(mockDataFromProcessDetailRequest.process);
     spy.mockRestore();
 
 });

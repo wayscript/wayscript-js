@@ -53,7 +53,7 @@ test('Get Process Data From Response From Request', () => {
 
     let spy = jest.spyOn(wayscriptClient,'getResponseFromRequest').mockImplementation((url) => {
         let urlArray = url.split("/");
-        if (urlArray[urlArray.length - 2] != mockDataFromProcessDetailRequest["process"]["id"]) {
+        if (urlArray[urlArray.length - 2] != mockDataFromProcessDetailRequest.process.id) {
             return [404, "Process id does not match"];
         }
         return [200, mockDataFromProcessDetailRequest];
