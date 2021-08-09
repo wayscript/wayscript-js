@@ -3,6 +3,7 @@ services:
   app:
     build:
       context: .
+    working_dir: /opt/project
     volumes:
       - .:/opt/project
     stdin_open: true
