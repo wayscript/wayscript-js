@@ -18,20 +18,20 @@ function getProcessDetailExpandedData() {
 }
 
 function getProcess() {
-    return getProcessDetailExpandedData()["process"];
+    return getProcessDetailExpandedData().process;
 }
 
 function getEvent() {
-    return getProcessDetailExpandedData()["event"];
+    return getProcessDetailExpandedData().event;
 }
 
 function getLairTrigger() {
-    return getProcessDetailExpandedData()["lair_trigger"];
+    return getProcessDetailExpandedData().lair_trigger;
 }
 
 function getLair() {
     let process = getProcess();
-    let lairId = process["lair_id"];
+    let lairId = process.lair_id;
 
     let client = new utils.WayScriptClient();
     let response = client.getLairDetail(lairId);
@@ -40,7 +40,7 @@ function getLair() {
 
 function getWorkspace() {
     let lair = getLair();
-    let workspaceId = lair["workspace_id"];
+    let workspaceId = lair.workspace_id;
 
     let client = new utils.WayScriptClient();
     let response = client.getWorkspaceDetail(workspaceId);

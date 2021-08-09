@@ -10,7 +10,7 @@ RUN npm install
 
 COPY ./files/ /
 
-COPY ./ ${PROJECT_DIR}
+COPY ./ ${PROJECT_DIR}/src/
 
 
 

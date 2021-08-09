@@ -17,17 +17,17 @@ class WayScriptClient {
     }
 
     getProcessDetailExpanded(_id) {
-        let endpoint = this.buildURLEndpoint("processes","detail_expanded",{"id":_id});
+        let endpoint = this.buildURLEndpoint("processes","detail_expanded",{id: _id});
         return this.getResponseFromRequest(endpoint);
     }
 
     getLairDetail(_id) {
-        let endpoint = this.buildURLEndpoint("lairs","detail",{"id":_id});
+        let endpoint = this.buildURLEndpoint("lairs","detail",{id: _id});
         return this.getResponseFromRequest(endpoint);
     }
 
     getWorkspaceDetail(_id) {
-        let endpoint = this.buildURLEndpoint("workspaces","detail",{"id":_id});
+        let endpoint = this.buildURLEndpoint("workspaces","detail",{id: _id});
         return this.getResponseFromRequest(endpoint);
     }
 
