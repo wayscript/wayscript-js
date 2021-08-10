@@ -3,9 +3,8 @@ services:
   app:
     build:
       context: .
-    working_dir: /opt/project
     volumes:
-      - .:/opt/project
+      - ./:/usr/local/src/project
     stdin_open: true
     tty: true
 
