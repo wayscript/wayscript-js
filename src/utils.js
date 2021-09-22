@@ -45,17 +45,16 @@ class WayScriptClient {
         let request = new XMLHttpRequest();
         request.responseType = 'json';
         request.open("GET", url, false);
-        request.setRequestHeader('authorization',getProcessExecutionUserToken());
-        
-        let jsonResponse = '';
-        request.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                jsonResponse = this.response;
-            }
-        };
-        request.send();
+        let access_token = "Bearer " + getProcessExecutionUserToken();
+        request.setRequestHeader('authorization', access_token);
 
-        return [request.status, jsonResponse];
+        try {
+            request.send();
+        } catch (e) {
+            console.log(e);
+        }
+
+        return [request.status, JSON.parse(request.responseText)];
     }
 }
 
