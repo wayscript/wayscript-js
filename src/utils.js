@@ -3,11 +3,11 @@ const settings = require("./setup");
 
 
 function getProcessExecutionUserToken() {
-    return process.env.PROCESS_EXECUTION_USER_TOKEN || "";
+    return process.env.WAYSCRIPT_EXECUTION_USER_TOKEN || "";
 }
 
 function getProcessUUID() {
-    return process.env.PROCESS_UUID || 0;
+    return process.env.WS_PROCESS_ID;
 }
 
 class WayScriptClient {
