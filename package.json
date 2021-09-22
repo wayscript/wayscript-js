@@ -40,10 +40,12 @@
     "url": "https://github.com/wayscript/wayscript-js/issues"
   },
   "homepage": "https://wayscript.com",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  },
   "devDependencies": {
     "eslint": "^7.30.0",
     "eslint-plugin-jest": "^24.3.6",
-    "jest": "^27.0.6",
-    "xmlhttprequest": "^1.8.0"
+    "jest": "^27.0.6"
   }
 }
