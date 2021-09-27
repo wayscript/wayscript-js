@@ -16,19 +16,24 @@ class WayScriptClient {
         this.process_uuid = getProcessUUID();
     }
 
+    postWebhookHttpTrigger(_id, payload) {
+        let url = this.buildURLEndpoint("webhooks","http_trigger_response",{id: _id});
+        return this.executeRequest('POST', url, payload);
+    }
+
     getProcessDetailExpanded(_id) {
-        let endpoint = this.buildURLEndpoint("processes","detail_expanded",{id: _id});
-        return this.getResponseFromRequest(endpoint);
+        let url = this.buildURLEndpoint("processes","detail_expanded",{id: _id});
+        return this.executeRequest('GET', url);
     }
 
     getLairDetail(_id) {
-        let endpoint = this.buildURLEndpoint("lairs","detail",{id: _id});
-        return this.getResponseFromRequest(endpoint);
+        let url = this.buildURLEndpoint("lairs","detail",{id: _id});
+        return this.executeRequest('GET', url);
     }
 
     getWorkspaceDetail(_id) {
-        let endpoint = this.buildURLEndpoint("workspaces","detail",{id: _id});
-        return this.getResponseFromRequest(endpoint);
+        let url = this.buildURLEndpoint("workspaces","detail",{id: _id});
+        return this.executeRequest('GET', url);
     }
 
     buildURLEndpoint(subpath, route, templateArgs) {
@@ -40,21 +45,35 @@ class WayScriptClient {
         let url = settings.WAYSCRIPT_ORIGIN + "/" + subpathEndpoint;
         return url;
     }
+ 
+    executeRequest(method, url, payload) {
 
-    getResponseFromRequest(url) {
         let request = new XMLHttpRequest();
+
+        request.open(method, url, false);
+
         request.responseType = 'json';
-        request.open("GET", url, false);
         let access_token = "Bearer " + getProcessExecutionUserToken();
         request.setRequestHeader('authorization', access_token);
-
+        request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
         try {
-            request.send();
+            request.send(payload);
         } catch (e) {
             console.log(e);
         }
 
-        return [request.status, JSON.parse(request.responseText)];
+        let responseJson = '';
+
+        try {
+            responseJson =  JSON.parse(request.responseText);
+        } catch (e) {
+            console.log(e);
+            console.log(url);
+            console.log(request.status);
+            console.log(request.responseText);
+        }
+
+        return [request.status, responseJson];
     }
 }
 
