@@ -3,11 +3,11 @@ const settings = require("./setup");
 
 
 function getProcessExecutionUserToken() {
-    return process.env.PROCESS_EXECUTION_USER_TOKEN || "";
+    return process.env.WAYSCRIPT_EXECUTION_USER_TOKEN || "";
 }
 
 function getProcessUUID() {
-    return process.env.PROCESS_UUID || 0;
+    return process.env.WS_PROCESS_ID;
 }
 
 class WayScriptClient {
@@ -45,17 +45,16 @@ class WayScriptClient {
         let request = new XMLHttpRequest();
         request.responseType = 'json';
         request.open("GET", url, false);
-        request.setRequestHeader('authorization',getProcessExecutionUserToken());
-        
-        let jsonResponse = '';
-        request.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                jsonResponse = this.response;
-            }
-        };
-        request.send();
+        let access_token = "Bearer " + getProcessExecutionUserToken();
+        request.setRequestHeader('authorization', access_token);
 
-        return [request.status, jsonResponse];
+        try {
+            request.send();
+        } catch (e) {
+            console.log(e);
+        }
+
+        return [request.status, JSON.parse(request.responseText)];
     }
 }
 

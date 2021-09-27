@@ -4,7 +4,7 @@ function processResponseFromClient(response) {
     let responseStatus = response[0];
     let jsonResponseData = response[1];
     if (!(200 <= responseStatus && responseStatus <= 299)) {
-        return JSON.parse(`{ "Success" : "False", "Status" : "${responseStatus}"}`);
+        throw `{ "status" : "${responseStatus}", "json": "${jsonResponseData}"}`;
     }
     return jsonResponseData;
 }
