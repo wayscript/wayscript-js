@@ -36,6 +36,11 @@ class WayScriptClient {
         return this.executeRequest('GET', url);
     }
 
+    getUserByApplicationKey(_id, _key) {
+        let url = this.buildURLEndpoint("workspaces","user_application_key_detail",{id: _id});
+        return this.executeRequest('GET', url, null, _key);
+    }
+
     buildURLEndpoint(subpath, route, templateArgs) {
         let subpathEndpoint = settings.ROUTES[subpath][route];
         for (const arg in templateArgs) {
@@ -46,14 +51,19 @@ class WayScriptClient {
         return url;
     }
  
-    executeRequest(method, url, payload) {
+    executeRequest(method, url, payload, key=null) {
 
         let request = new XMLHttpRequest();
 
         request.open(method, url, false);
 
         request.responseType = 'json';
-        let access_token = "Bearer " + getProcessExecutionUserToken();
+
+        if(key){
+            let access_token = "Bearer " + key;
+        }else{ 
+            let access_token = "Bearer " + getProcessExecutionUserToken();
+        }
         request.setRequestHeader('authorization', access_token);
         request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
         try {
