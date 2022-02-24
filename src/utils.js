@@ -59,10 +59,10 @@ class WayScriptClient {
 
         request.responseType = 'json';
 
+        let access_token = "Bearer " + getProcessExecutionUserToken();
+
         if(key){
-            let access_token = "Bearer " + key;
-        }else{ 
-            let access_token = "Bearer " + getProcessExecutionUserToken();
+            access_token = "Bearer " + key;
         }
         request.setRequestHeader('authorization', access_token);
         request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
