@@ -36,7 +36,7 @@ class WayScriptClient {
         return this.executeRequest('GET', url);
     }
 
-    getUserByApplicationKey(_id, _key) {
+    getUserByApplicationKeyDetail(_id, _key) {
         let url = this.buildURLEndpoint("workspaces","user_application_key_detail",{id: _id});
         return this.executeRequest('GET', url, null, _key);
     }

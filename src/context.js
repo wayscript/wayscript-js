@@ -48,5 +48,14 @@ function getWorkspace() {
 
 }
 
+function getUserByApplicationKey(key){
+    let let lair = getLair();
+    let workspaceId = lair.workspace_id;
 
-module.exports = {getProcessDetailExpandedData, getProcess, getEvent, getLairTrigger, getLair, getWorkspace};
+    let client = new utils.WayScriptClient();
+    let response = client.getUserByApplicationKeyDetail(workspaceId, key);
+    return processResponseFromClient(response);
+}
+
+
+module.exports = {getProcessDetailExpandedData, getProcess, getEvent, getLairTrigger, getLair, getWorkspace, getUserByApplicationKey};
