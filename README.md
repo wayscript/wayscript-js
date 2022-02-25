@@ -23,3 +23,5 @@ const wayscript = require("wayscript")
 event = wayscript.context.getEvent();
 console.log(event);
 ```
+
+More use cases in example.js
