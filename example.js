@@ -5,7 +5,8 @@ const wayscript = require("wayscript");
 let data = {"hello": "world"};
 let headers = {"x-my-custom-header": "hello"};
 let status_code = 200;
-response = wayscript.http_trigger.sendResponse(data, headers, status_code);
+let response = wayscript.http_trigger.sendResponse(data, headers, status_code);
+console.log(response)
 
 // Get wayscript context with js
 let event =  wayscript.context.getEvent();
