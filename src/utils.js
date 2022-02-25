@@ -10,6 +10,10 @@ function getProcessUUID() {
     return process.env.WS_PROCESS_ID;
 }
 
+function getApplicationKey(){
+    return process.env.WAYSCRIPT_EXECUTION_USER_APPLICATION_KEY;
+}
+
 class WayScriptClient {
     constructor() {
         this.user_auth_token = getProcessExecutionUserToken();
@@ -36,6 +40,16 @@ class WayScriptClient {
         return this.executeRequest('GET', url);
     }
 
+    getUserByApplicationKeyDetail(_id, _applicationKey) {
+        let url = this.buildURLEndpoint("workspaces","user_application_key_detail",{id: _id});
+        const headers = {
+            'authorization': "Bearer " +_applicationKey,
+            'Content-Type': 'application/json;charset=UTF-8'
+        };
+
+        return this.executeRequest('GET', url, null, headers);
+    }
+
     buildURLEndpoint(subpath, route, templateArgs) {
         let subpathEndpoint = settings.ROUTES[subpath][route];
         for (const arg in templateArgs) {
@@ -46,16 +60,26 @@ class WayScriptClient {
         return url;
     }
  
-    executeRequest(method, url, payload) {
+    executeRequest(method, url, payload, headers) {
 
         let request = new XMLHttpRequest();
 
         request.open(method, url, false);
 
         request.responseType = 'json';
+
         let access_token = "Bearer " + getProcessExecutionUserToken();
-        request.setRequestHeader('authorization', access_token);
-        request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+
+        if (headers !== undefined){
+            for (const [key, value] of Object.entries(headers)) {
+                request.setRequestHeader(`${key}`,`${value}`);
+            }
+        }
+        else{
+            request.setRequestHeader('authorization', access_token);
+            request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        }
+
         try {
             request.send(payload);
         } catch (e) {
@@ -77,4 +101,4 @@ class WayScriptClient {
     }
 }
 
-module.exports = {getProcessExecutionUserToken, getProcessUUID, WayScriptClient};
+module.exports = {getProcessExecutionUserToken, getProcessUUID, getApplicationKey, WayScriptClient};

@@ -9,7 +9,8 @@ const ROUTES = {
     lairs: {"detail": LAIRS_ROUTE + "/$id"},
     processes: {"detail_expanded": PROCESSES_ROUTE + "/$id/detail"},
     webhooks: {"http_trigger_response": WEBHOOKS_ROUTE + "/http-trigger/response/$id"},
-    workspaces: {"detail": WORKSPACES_ROUTE + "/$id"},
+    workspaces: {"detail": WORKSPACES_ROUTE + "/$id",
+                 "user_application_key_detail": WORKSPACES_ROUTE + "/$id/users/self"},
 }
 
 module.exports = {WAYSCRIPT_ORIGIN, ROUTES};
