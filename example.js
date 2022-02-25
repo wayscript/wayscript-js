@@ -31,7 +31,6 @@ console.log(workspace);
 
 
 let key = "YOUR APPLICATION KEY"
-// application key can be obtained from workspace settings, or through environmental variable
-// os.environ.get('WAYSCRIPT_EXECUTION_USER_APPLICATION_KEY')
+// application key can be obtained from workspace settings, or through environmental variable 'WAYSCRIPT_EXECUTION_USER_APPLICATION_KEY'
 let user = wayscript.context.getUserByApplicationKey(key);
 console.log(user)
