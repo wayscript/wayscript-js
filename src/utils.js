@@ -43,8 +43,7 @@ class WayScriptClient {
     getUserByApplicationKeyDetail(_id, _applicationKey) {
         let url = this.buildURLEndpoint("workspaces","user_application_key_detail",{id: _id});
         const headers = {
-            'authorization': _applicationKey,
-            'Content-Type': 'application/json;charset=UTF-8'
+            'authorization': "Bearer " +_applicationKey,
         };
 
         return this.executeRequest('GET', url, null, headers);
@@ -70,15 +69,13 @@ class WayScriptClient {
 
         let access_token = "Bearer " + getProcessExecutionUserToken();
 
+        request.setRequestHeader('authorization', access_token);
+        request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
         if (headers !== undefined){
             for (const [key, value] of Object.entries(headers)) {
                 request.setRequestHeader(`${key}`,`${value}`);
-                console.log(`${key}`)
             }
-        }
-        else{
-            request.setRequestHeader('authorization', access_token);
-            request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
         }
 
         try {
