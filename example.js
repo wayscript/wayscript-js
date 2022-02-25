@@ -30,6 +30,6 @@ let workspace = wayscript.context.getWorkspace();
 console.log(workspace);
 
 
-let applicationKey = wayscript.util.getApplicationKey()
+let applicationKey = wayscript.utils.getApplicationKey()
 let user = wayscript.context.getUserByApplicationKey(applicationKey);
 console.log(user)
