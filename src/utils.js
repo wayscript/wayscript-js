@@ -72,12 +72,12 @@ class WayScriptClient {
         request.setRequestHeader('authorization', access_token);
         request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
 
-        if headers{
+        if (headers !== undefined){
             for (const [key, value] of Object.entries(headers)) {
                 request.setRequestHeader(`${key}`,`${value}`);
             }
         }
-        
+
         try {
             request.send(payload);
         } catch (e) {
