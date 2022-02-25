@@ -48,12 +48,12 @@ function getWorkspace() {
 
 }
 
-function getUserByApplicationKey(key){
+function getUserByApplicationKey(applicationKey){
     let lair = getLair();
     let workspaceId = lair.workspace_id;
 
     let client = new utils.WayScriptClient();
-    let response = client.getUserByApplicationKeyDetail(workspaceId, key);
+    let response = client.getUserByApplicationKeyDetail(workspaceId, applicationKey);
     return processResponseFromClient(response);
 }
 
