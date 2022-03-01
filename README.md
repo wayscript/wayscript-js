@@ -25,4 +25,3 @@ console.log(event);
 ```
 
 More use cases in can be found [here](example.js) 
-[Contribution guidelines for this project](CONTRIBUTING.md)
