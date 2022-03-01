@@ -25,3 +25,5 @@ console.log(event);
 ```
 
 More use cases in can be found [here](example.js) 
+
+Contributing guide [here](CONTRIBUTING.md)
