@@ -21,4 +21,7 @@ To get an overview of the project, read the [README](README.md) and [examples](e
 1. If test publish succeeded, remove the credentials added to npmrc file in the previous process
 2. Register/Login your npm account, ask wayscript admin for permission and configure 2FA authentication
 3. npm login with your npm credential
-4. Run ```npm publish --access public```, more details [here](https://docs.npmjs.com/cli/v8/commands/npm-publish)
+4. Run ```npm publish --access public``` in the repo, more details [here](https://docs.npmjs.com/cli/v8/commands/npm-publish)
+
+## Unpublish
+1. If unexpected error in package, run ```npm unpublish wayscript@<error version number> ``` to roll back to the previous version
