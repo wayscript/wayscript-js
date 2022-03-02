@@ -10,11 +10,11 @@ To get an overview of the project, read the [README](README.md) and [examples](e
 
 ## Test Publish 
 1. Make a test directory 'wayscript-js-test-publish' and copy the 'wayscript-js' folder over
-3. Clone this [nexus-dockerized](https://github.com/meierj-wayscript/nexus-dockerized) repository, follow the readme to get the application running at local and login the application
-4. Create a repository, choose the category 'npm hosted' to create a local npm registry,
-5. Credential setup, follow these steps to encode nexus server credentials and add the credentials to the npm configuration
+2. Clone this [nexus-dockerized](https://github.com/meierj-wayscript/nexus-dockerized) repository, follow the readme to get the application running at local and login the application
+3. Create a repository, choose the category 'npm hosted' to create a local npm registry,
+4. Credential setup, follow these steps to encode nexus server credentials and add the credentials to the npm configuration
 > Note: You may need to comment out the code in npmrc file if it is not empty before adding the credential in. 
-6. Set up and publish details of the npm-hosted repository can be found [here](https://levelup.gitconnected.com/deploying-private-npm-packages-to-nexus-a16722cc8166)under 'Pushing Binaries to Nexus' 
+5. Set up and publish details of the npm-hosted repository can be found [here](https://levelup.gitconnected.com/deploying-private-npm-packages-to-nexus-a16722cc8166) under 'Pushing Binaries to Nexus' 
 > Note: Changes and test publish in the above process should be made to 'wayscript-js-test-publish' test directory
 
 ## Publish
