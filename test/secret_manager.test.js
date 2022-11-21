@@ -5,12 +5,12 @@ const context = require("../src/context");
 // Set up standard mocks
 jest.mock("../src/utils");
 jest.mock("../src/context");
-context.getProcess.mockImplementation(() => `{"lair_id": "fake_lair_id"}`)
+context.getProcess.mockImplementation(() => `{"lair_id": "fake_lair_id"}`);
 
 test('Set Secret returns no info on success', () => {
     let payload = {};
 
-    utils.WayScriptClient.setLairSecret.mockImplementationOnce(() => [200, payload])
+    jest.spyOn(utils.WayScriptClient.prototype, "setLairSecret").mockImplementationOnce(() => [200, payload]);
     expect(secret_manager.setSecret("test_key", "test_value")).toStrictEqual(JSON.parse(payload));
 });
 
