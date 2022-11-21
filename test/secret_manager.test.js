@@ -24,7 +24,7 @@ test('Set Secret returns passed error message on 404', () => {
 });
 
 test('Set Secret returns unique error message on 403', () => {
-    let error = {error: "user is not authorized to modify lair"};
+    //let error = {error: "user is not authorized to modify lair"};
 
     let client = new utils.WayScriptClient()
     client.setLairSecret.mockImplementationOnce(() => [403, {}])
