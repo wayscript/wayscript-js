@@ -5,7 +5,7 @@ const context = require("../src/context");
 // Set up standard mocks
 jest.mock("utils");
 jest.mock("context");
-context.getProcess.mockImplementation(() => {lair_id: "fake_lair_id"})
+context.getProcess.mockImplementation(() => `{"lair_id": "fake_lair_id"}`)
 
 test.skip('Set Secret returns no info on success', () => {
     let payload = {};
