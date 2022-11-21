@@ -11,7 +11,7 @@ test('Set Secret returns no info on success', () => {
 
     jest.spyOn(utils.WayScriptClient.prototype, "setLairSecret").mockImplementationOnce(() => [200, payload]);
     let test_fn = () => { secret_manager.setSecret("test_key", "test_value") }
-    expect(test_fn()).toEqual(payload);
+    expect(test_fn).toEqual(payload);
 });
 
 test('Set Secret returns passed error message on 404', () => {
