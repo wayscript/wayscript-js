@@ -22,9 +22,9 @@ test('Set Secret returns passed error message on 404', () => {
         secret_manager.setSecret("test_key", "test_value")
     } catch (err) {
         expect(JSON.parse(err)).toEqual(result)
-        return
+        return  // short circuit
     }
-    expect(true).toEqual(false)
+    expect(true).toEqual(false)  // fail if no error thrown
 });
 
 test('Set Secret returns unique error message on 403', () => {
