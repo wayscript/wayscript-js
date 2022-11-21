@@ -14,7 +14,7 @@ function setSecret(secret_key, secret_val){
         if (responseStatus == 403) {
             jsonResponseData = {error: "user is not authorized to modify lair"};
         }
-        throw `{"status":"${responseStatus}","json":"${JSON.stringify(jsonResponseData)}"}`;
+        throw `{"status":"${responseStatus}","json":${JSON.stringify(jsonResponseData)}}`;
     }
     return jsonResponseData;
 }
