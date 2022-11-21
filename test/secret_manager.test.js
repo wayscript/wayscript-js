@@ -3,7 +3,6 @@ const utils = require("../src/utils");
 const context = require("../src/context");
 
 // Set up standard mocks
-jest.mock("../src/utils");
 jest.mock("../src/context");
 context.getProcess.mockImplementation(() => `{"lair_id": "fake_lair_id"}`);
 
