@@ -18,7 +18,13 @@ test('Set Secret returns passed error message on 404', () => {
     let result = {status: "404", json: error}
     
     jest.spyOn(utils.WayScriptClient.prototype, "setLairSecret").mockImplementationOnce(() => [404, error]);
-    expect(() => { secret_manager.setSecret("test_key", "test_value") }).toThrow(result);
+    try {
+        secret_manager.setSecret("test_key", "test_value")
+    } catch (err) {
+        expect(JSON.parse(err)).toEqual(result)
+        return
+    }
+    expect(true).toEqual(false)
 });
 
 test('Set Secret returns unique error message on 403', () => {
