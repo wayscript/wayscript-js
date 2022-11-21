@@ -10,10 +10,9 @@ context.getProcess.mockImplementation(() => {lair_id: "fake_lair_id"})
 test.skip('Set Secret returns no info on success', () => {
     let payload = {};
 
-    client = new utils.WayScriptClient()
-    client.setLairSecret.mock([200, payload])
+    let client = new utils.WayScriptClient()
+    client.setLairSecret.mockImplementationOnce(() => [200, payload])
     expect(secret_manager.setSecret("test_key", "test_value")).toStrictEqual(JSON.parse(payload));
-    spy200.mockRestore();
 });
 /*
 test.skip('Set Secret returns passed error message on 404', () => {
