@@ -21,7 +21,7 @@ test('Set Secret returns passed error message on 404', () => {
     try {
         secret_manager.setSecret("test_key", "test_value")
     } catch (err) {
-        expect(err).toEqual(result)
+        expect(err).toEqual(JSON.stringify(result))
         return  // short circuit
     }
     expect(true).toEqual(false)  // fail if no error thrown
