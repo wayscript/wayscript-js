@@ -2,13 +2,13 @@ const utils = require("./utils");
 const context = require("./context");
 
 function setSecret(secret_key, secret_val){
-    let process = context.getProcess();
-    let lairId = process.lair_id;
+    const process = context.getProcess();
+    const lairId = process.lair_id;
 
-    let client = new utils.WayScriptClient();
-    let response = client.setLairSecret(lairId, secret_key, secret_val);
+    const client = new utils.WayScriptClient();
+    const response = client.setLairSecret(lairId, secret_key, secret_val);
 
-    let responseStatus = response[0];
+    const responseStatus = response[0];
     let jsonResponseData = response[1];
     if (!(200 <= responseStatus && responseStatus <=299)) {
         if (responseStatus == 403) {
