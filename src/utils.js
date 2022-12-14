@@ -51,8 +51,8 @@ class WayScriptClient {
     }
 
     setLairSecret(_id, _secretKey, _secretValue) {
-        let url = this.buildURLEndpoint("files","set_secret",{id: _id});
-        let payload = {key: _secretKey, value: _secretValue};
+        const url = this.buildURLEndpoint("files","set_secret",{id: _id});
+        const payload = {key: _secretKey, value: _secretValue};
         return this.executeRequest('POST', url, payload);
     }
 

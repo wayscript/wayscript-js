@@ -7,15 +7,15 @@ jest.mock("../src/context");
 context.getProcess.mockImplementation(() => `{"lair_id": "fake_lair_id"}`);
 
 test('Set Secret returns no info on success', () => {
-    let payload = {};
+    const payload = {};
 
     jest.spyOn(utils.WayScriptClient.prototype, "setLairSecret").mockImplementationOnce(() => [200, payload]);
     expect(secret_manager.setSecret("test_key", "test_value")).toEqual(payload);
 });
 
 test('Set Secret returns passed error message on 404', () => {
-    let error = {error: "wayscript backend error message"};
-    let result = {status: "404", json: error};
+    const error = {error: "wayscript backend error message"};
+    const result = {status: "404", json: error};
     
     jest.spyOn(utils.WayScriptClient.prototype, "setLairSecret").mockImplementationOnce(() => [404, error]);
     try {
@@ -28,7 +28,7 @@ test('Set Secret returns passed error message on 404', () => {
 });
 
 test('Set Secret returns unique error message on 403', () => {
-    let result = {status: "403", json: {error: "user is not authorized to modify lair"}};
+    const result = {status: "403", json: {error: "user is not authorized to modify lair"}};
 
     jest.spyOn(utils.WayScriptClient.prototype, "setLairSecret").mockImplementationOnce(() => [403, {}]);
     try {
