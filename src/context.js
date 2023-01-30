@@ -62,4 +62,4 @@ function getUserByApplicationKey(applicationKey){
 }
 
 
-module.exports = {getProcessDetailExpandedData, getProcess, getEvent, getLairTrigger, getLair, getWorkspace, getUserByApplicationKey};
+module.exports = {getProcessDetailExpandedData, getProcess, getEvent, getLairTrigger, getLair, getLairURL, getWorkspace, getUserByApplicationKey};
