@@ -38,6 +38,10 @@ function getLair() {
     return processResponseFromClient(response);
 }
 
+function getLairURL() {
+    return utils.getLairURL();
+}
+
 function getWorkspace() {
     let lair = getLair();
     let workspaceId = lair.workspace_id;
