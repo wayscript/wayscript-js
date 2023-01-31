@@ -18,22 +18,31 @@ test('Build Workspace Endpoint URL', () => {
     expect(wayscriptClient.buildURLEndpoint("workspaces","detail",{"id":id})).toBe("https://api.wayscript.com/workspaces/d1e498e4-2f32-4e5c-803e-d5fe1e2b89fe");
 });
 
-test('Get Environment Variables', () => {
-    let env_vars = [
-        "WAYSCRIPT_EXECUTION_USER_TOKEN",
-        "WAYSCRIPT_EXECUTION_USER_REFRESH_TOKEN",
-        "WAYSCRIPT_EXECUTION_USER_APPLICATION_KEY",
-        "WAYSCRIPT_LAIR_URL",
-        "WS_PROCESS_ID"
-    ];
-    
-    env_vars.forEach(v => process.env[v] = "TEST_SETTING");
+describe('Environment Variables', () => {
+    const OLD_ENV = process.env;
 
-    expect(utils.getApplicationKey()).toBe("TEST_SETTING");
-    expect(utils.getLairUrl()).toBe("TEST_SETTING");
-    expect(utils.getProcessExecutionUserRefreshToken()).toBe("TEST_SETTING");
-    expect(utils.getProcessExecutionUserToken()).toBe("TEST_SETTING");
-    expect(utils.getProcessUUID()).toBe("TEST_SETTING");
+    beforeEach(() => {
+        jest.resetModules();
+        process.env = { ...OLD_ENV };
+    });
+
+    afterAll(() => {
+        process.env = OLD_ENV;
+    });
+
+    test('Get Environment Variables', () => {
+        process.env.WAYSCRIPT_EXECUTION_USER_TOKEN = "user_token";
+        process.env.WAYSCRIPT_EXECUTION_USER_REFRESH_TOKEN = "user_refresh_token";
+        process.env.WAYSCRIPT_EXECUTION_USER_APPLICATION_KEY = "user_application_key";
+        process.env.WAYSCRIPT_LAIR_URL = "https://some-lair-url.wayscript.com/";
+        process.env.WS_PROCESS_ID = "process_id";
+    
+        expect(utils.getProcessExecutionUserToken()).toBe("user_token");
+        expect(utils.getProcessExecutionUserRefreshToken()).toBe("user_refresh_token");
+        expect(utils.getApplicationKey()).toBe("user_application_key");
+        expect(utils.getLairUrl()).toBe("https://some-lair-url.wayscript.com/");
+        expect(utils.getProcessUUID()).toBe("process_id");
+    })
 })
 
 test.skip('Get Process Data From Response From Request', () => {
