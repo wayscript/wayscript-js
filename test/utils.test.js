@@ -18,6 +18,23 @@ test('Build Workspace Endpoint URL', () => {
     expect(wayscriptClient.buildURLEndpoint("workspaces","detail",{"id":id})).toBe("https://api.wayscript.com/workspaces/d1e498e4-2f32-4e5c-803e-d5fe1e2b89fe");
 });
 
+test('Get Environment Variables', () => {
+    let env_vars = [
+        "WAYSCRIPT_EXECUTION_USER_TOKEN",
+        "WAYSCRIPT_EXECUTION_USER_REFRESH_TOKEN",
+        "WAYSCRIPT_EXECUTION_USER_APPLICATION_KEY",
+        "WAYSCRIPT_LAIR_URL",
+        "WS_PROCESS_ID"
+    ];
+    
+    env_vars.forEach(v => process.env[v] = "TEST_SETTING");
+
+    expect(utils.getApplicationKey()).toBe("TEST_SETTING");
+    expect(utils.getLairUrl()).toBe("TEST_SETTING");
+    expect(utils.getProcessExecutionUserRefreshToken()).toBe("TEST_SETTING");
+    expect(utils.getProcessExecutionUserToken()).toBe("TEST_SETTING");
+    expect(utils.getProcessUUID()).toBe("TEST_SETTING");
+})
 
 test.skip('Get Process Data From Response From Request', () => {
 

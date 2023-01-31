@@ -38,8 +38,8 @@ function getLair() {
     return processResponseFromClient(response);
 }
 
-function getLairURL() {
-    return utils.getLairURL();
+function getLairUrl() {
+    return utils.getLairUrl();
 }
 
 function getWorkspace() {
@@ -62,4 +62,4 @@ function getUserByApplicationKey(applicationKey){
 }
 
 
-module.exports = {getProcessDetailExpandedData, getProcess, getEvent, getLairTrigger, getLair, getLairURL, getWorkspace, getUserByApplicationKey};
+module.exports = {getProcessDetailExpandedData, getProcess, getEvent, getLairTrigger, getLair, getLairUrl, getWorkspace, getUserByApplicationKey};

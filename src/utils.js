@@ -14,8 +14,12 @@ function getApplicationKey(){
     return process.env.WAYSCRIPT_EXECUTION_USER_APPLICATION_KEY;
 }
 
-function getLairURL() {
+function getLairUrl() {
     return process.env.WAYSCRIPT_LAIR_URL;
+}
+
+function getProcessExecutionUserRefreshToken() {
+    return process.env.WAYSCRIPT_EXECUTION_USER_REFRESH_TOKEN || "";
 }
 
 class WayScriptClient {
@@ -111,4 +115,4 @@ class WayScriptClient {
     }
 }
 
-module.exports = {getProcessExecutionUserToken, getProcessUUID, getApplicationKey, getLairURL, WayScriptClient};
+module.exports = {getProcessExecutionUserToken, getProcessUUID, getApplicationKey, getLairUrl, getProcessExecutionUserRefreshToken, WayScriptClient};
